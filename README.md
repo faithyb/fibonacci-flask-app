@@ -14,3 +14,6 @@ This web application generates a Fibonacci sequence using Flask. Users can enter
 ```bash
 pip install flask matplotlib
 python app.py
+
+
+Then open http://127.0.0.1:5000
