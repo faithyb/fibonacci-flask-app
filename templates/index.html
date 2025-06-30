@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonacci Generator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="container mt-5">
+
+    <h1 class="text-primary mb-4">Fibonacci Sequence Generator</h1>
+
+    <form method="POST" class="mb-4">
+        <label for="terms" class="form-label">Enter number of terms:</label>
+        <input type="number" name="terms" id="terms" class="form-control" required>
+        <button type="submit" class="btn btn-success mt-2">Generate</button>
+    </form>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    {% if sequence %}
+        <h2>Generated Sequence:</h2>
+        <div class="alert alert-info">{{ sequence|join(', ') }}</div>
+
+        <h3>Fibonacci Plot:</h3>
+        <img src="{{ url_for('static', filename='fibonacci_plot.png') }}" alt="Fibonacci Plot" class="img-fluid mb-3">
+
+        <p>
+            <a href="{{ url_for('static', filename='fibonacci_sequence.csv') }}" class="btn btn-outline-primary" download>Download CSV</a>
+            <a href="{{ url_for('static', filename='fibonacci_sequence.txt') }}" class="btn btn-outline-secondary" download>Download TXT</a>
+        </p>
+    {% endif %}
+
+</body>
+</html>
